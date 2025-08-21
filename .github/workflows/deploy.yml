@@ -90,6 +90,7 @@ jobs:
           # SouthBlue deployment paths (nginx multi-site structure)
           PROJECT_DIR="/opt/websites/southblueweb.com/current"
           BACKUP_DIR="/opt/websites/southblueweb.com/backups"
+          LOG_DIR="/opt/websites/southblueweb.com/shared/logs"
           
           echo "🚀 Starting SouthBlue Website deployment..."
           
@@ -121,7 +122,7 @@ jobs:
           
           # Test nginx configuration and reload
           echo "🔄 Reloading nginx..."
-          sudo nginx -t
+          sudo /usr/sbin/nginx -t
           sudo systemctl reload nginx
           
           # Cleanup
