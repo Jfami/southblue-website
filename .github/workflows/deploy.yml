@@ -1,0 +1,190 @@
+# GitHub Actions Workflow for SouthBlue Website Deployment
+# Deploys to AWS Lightsail infrastructure (shared with other sites)
+
+name: Deploy SouthBlue Website
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to deploy to'
+        required: true
+        default: 'production'
+        type: choice
+        options:
+          - production
+
+env:
+  AWS_REGION: eu-west-3
+  LIGHTSAIL_INSTANCE_NAME: WebServerNodeLightSail-Prod
+  LIGHTSAIL_REGION: eu-west-3
+  DEPLOY_USER: bitnami
+  PROJECT_NAME: southblue
+  DOMAIN: southblueweb.com
+
+jobs:
+  deploy:
+    name: Deploy SouthBlue to Web Servers
+    runs-on: ubuntu-latest
+    environment: production
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.LIGHTSAIL_REGION }}
+          
+      - name: Setup SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.LIGHTSAIL_SSH_KEY }}" > ~/.ssh/lightsail_key
+          chmod 600 ~/.ssh/lightsail_key
+          
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Build application
+        run: |
+          npm run build
+          echo "Build completed for SouthBlue Website"
+          ls -la dist/
+          
+      - name: Create deployment package
+        run: |
+          mkdir -p deployment-package
+          cp -r dist/* deployment-package/
+          tar -czf deployment.tar.gz -C deployment-package .
+          
+      - name: Get Lightsail instance IP
+        id: instance
+        run: |
+          PUBLIC_IP=$(aws lightsail get-instance --instance-name ${{ env.LIGHTSAIL_INSTANCE_NAME }} --region ${{ env.LIGHTSAIL_REGION }} --query 'instance.publicIpAddress' --output text)
+          echo "public_ip=$PUBLIC_IP" >> $GITHUB_OUTPUT
+          echo "Lightsail IP: $PUBLIC_IP"
+          # Add server to known hosts
+          ssh-keyscan -H $PUBLIC_IP >> ~/.ssh/known_hosts
+          
+      - name: Upload and deploy to Lightsail (Safe Multi-Site Deployment)
+        run: |
+          scp -i ~/.ssh/lightsail_key -o StrictHostKeyChecking=no deployment.tar.gz ${{ env.DEPLOY_USER }}@${{ steps.instance.outputs.public_ip }}:/tmp/
+          
+          ssh -i ~/.ssh/lightsail_key -o StrictHostKeyChecking=no ${{ env.DEPLOY_USER }}@${{ steps.instance.outputs.public_ip }} << 'EOF'
+          # Extract deployment package
+          cd /tmp
+          mkdir -p deployment-temp
+          tar -xzf deployment.tar.gz -C deployment-temp 2>/dev/null || echo "Extraction completed with warnings"
+          
+          # SouthBlue deployment paths (nginx multi-site structure)
+          PROJECT_DIR="/opt/websites/southblueweb.com/current"
+          BACKUP_DIR="/opt/websites/southblueweb.com/backups"
+          
+          echo "🚀 Starting SouthBlue Website deployment..."
+          
+          # Create backup of existing deployment
+          if [ -d "$PROJECT_DIR" ]; then
+            echo "📦 Creating backup..."
+            sudo mkdir -p "$BACKUP_DIR"
+            sudo cp -r "$PROJECT_DIR" "$BACKUP_DIR/southblue-backup-$(date +%Y%m%d-%H%M%S)"
+          fi
+          
+          # Create project directory
+          sudo mkdir -p "$PROJECT_DIR"
+          
+          # Deploy SouthBlue files
+          echo "📁 Deploying SouthBlue Website files..."
+          sudo rm -rf "$PROJECT_DIR"/*
+          sudo cp -r deployment-temp/* "$PROJECT_DIR/"
+          sudo chown -R bitnami:bitnami "$PROJECT_DIR"
+          
+          # Ensure health endpoint exists
+          if [ ! -f "$PROJECT_DIR/health" ]; then
+            echo 'healthy' | sudo tee "$PROJECT_DIR/health"
+            sudo chown bitnami:bitnami "$PROJECT_DIR/health"
+          fi
+          
+          # Verify deployment
+          echo "📁 Deployed files:"
+          ls -la "$PROJECT_DIR/"
+          
+          # Test nginx configuration and reload
+          echo "🔄 Reloading nginx..."
+          sudo nginx -t
+          sudo systemctl reload nginx
+          
+          # Cleanup
+          sudo rm -rf /tmp/deployment-temp /tmp/deployment.tar.gz
+          
+          echo "✅ SouthBlue Website deployment completed successfully!"
+          echo "🌐 Site should be available at: https://southblueweb.com"
+          EOF
+          
+      - name: Verify deployment
+        run: |
+          echo "🚀 Deployment completed!"
+          sleep 10
+          
+          # Use HTTPS for production site with SSL certificate
+          HEALTH_URL="https://southblueweb.com/health"
+          SITE_URL="https://southblueweb.com"
+          
+          # Test health check with SSL
+          if curl -f -s "$HEALTH_URL" > /dev/null; then
+            echo "✅ Health check passed: $HEALTH_URL"
+          else
+            echo "❌ Health check failed: $HEALTH_URL"
+            exit 1
+          fi
+          
+          # Test main site with SSL
+          if curl -f -s "$SITE_URL" > /dev/null; then
+            echo "✅ Website accessible: $SITE_URL"
+          else
+            echo "❌ Website not accessible: $SITE_URL"
+            exit 1
+          fi
+          
+          echo "📋 Deployment Summary:"
+          echo "  Domain: southblueweb.com"
+          echo "  Instance: ${{ env.LIGHTSAIL_INSTANCE_NAME }}"
+          echo "  IP: ${{ steps.instance.outputs.public_ip }}"
+          echo "  Health Check: $HEALTH_URL"
+          echo "  Website: $SITE_URL"
+
+      - name: Purge Cloudflare Cache
+        if: success()
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID_SOUTHBLUE }}
+        run: |
+          echo "🔄 Purging Cloudflare cache for SouthBlue Website after successful deployment..."
+          # Purge entire zone cache for southblueweb.com
+          curl -X POST "https://api.cloudflare.com/client/v4/zones/$CLOUDFLARE_ZONE_ID/purge_cache" \
+            -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            -H "Content-Type: application/json" \
+            --data '{"purge_everything":true}'
+          echo "✅ Cache purge completed!"
+
+      - name: Deployment Summary
+        if: success()
+        run: |
+          echo "🎉 SouthBlue Website Deployment Completed Successfully!"
+          echo "=================================="
+          echo "🌐 Domain: https://${{ env.DOMAIN }}"
+          echo "📁 Project: ${{ env.PROJECT_NAME }}"
+          echo "🚀 Deployed to: ${{ env.LIGHTSAIL_INSTANCE_NAME }}"
+          echo "⏰ Time: $(date)"
+          echo "🔗 Repository: ${{ github.repository }}"
+          echo "📝 Commit: ${{ github.sha }}"
