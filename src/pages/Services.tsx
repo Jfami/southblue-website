@@ -7,31 +7,35 @@ const Services = () => {
   const services = [
     {
       icon: Cpu,
-      title: "Microprocessors",
-      description: "High-performance processors for computing applications",
-      features: ["ARM-based Solutions", "x86 Architecture", "Custom Designs", "IoT Processors"],
-      price: "Starting from $50"
-    },
-    {
-      icon: Zap,
-      title: "Memory Chips",
-      description: "Advanced memory solutions for all your storage needs",
-      features: ["DDR4/DDR5 RAM", "Flash Memory", "EEPROM", "Cache Memory"],
-      price: "Starting from $25"
+      title: "Components Procurement",
+      description: "Sourcing authentic electronic components from trusted suppliers",
+      features: ["ICs & Microcontrollers", "Diodes & Transistors", "Capacitors & Inductors", "Sensors & Modules"],
+      price: "Competitive pricing",
+      link: "/services/components-procurement"
     },
     {
       icon: Shield,
-      title: "Security Chips",
-      description: "Specialized chips for security and encryption",
-      features: ["TPM Modules", "Crypto Processors", "HSM Solutions", "Secure Elements"],
-      price: "Starting from $75"
+      title: "Quality Assurance",
+      description: "Third-party lab testing for 100% authentic parts guarantee",
+      features: ["Visual Authenticity Tests", "Third-Party Lab Verification", "COC Documentation", "365-Day Return Policy"],
+      price: "Included in service",
+      link: "/services/quality-assurance"
+    },
+    {
+      icon: Zap,
+      title: "Excess Stock Management",
+      description: "Efficient management and redistribution of surplus inventory",
+      features: ["Inventory Assessment", "Market Valuation", "Redistribution Network", "Cost Recovery"],
+      price: "Commission-based",
+      link: "/services/excess-stock-management"
     },
     {
       icon: Headphones,
-      title: "Technical Support",
-      description: "Expert guidance and support for integration",
-      features: ["24/7 Support", "Integration Help", "Custom Solutions", "Maintenance"],
-      price: "Contact for pricing"
+      title: "Value-Added Services",
+      description: "Comprehensive support beyond component trading",
+      features: ["PCBA Factory Recommendations", "Testing Lab Support", "Consolidated Shipping", "EOL/Obsolescence Support"],
+      price: "Custom quotes",
+      link: "/services/value-added-services"
     }
   ];
 
@@ -44,8 +48,8 @@ const Services = () => {
             Our Services
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Comprehensive integrated circuit solutions tailored to your technology needs. 
-            From standard components to custom designs, we deliver excellence.
+            Independent distribution of authentic electronic components with comprehensive 
+            quality assurance and value-added services for European markets.
           </p>
         </div>
       </section>
@@ -84,8 +88,8 @@ const Services = () => {
                     asChild 
                     className="w-full bg-gradient-primary hover:bg-gradient-accent text-primary-foreground"
                   >
-                    <Link to="/contact" className="flex items-center justify-center">
-                      Get Quote
+                    <Link to={service.link} className="flex items-center justify-center">
+                      Learn More
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>

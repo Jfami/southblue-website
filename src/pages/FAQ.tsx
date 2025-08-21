@@ -113,14 +113,14 @@ const FAQ = () => {
             Our technical experts are here to help you find the perfect solution
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
-              href="mailto:info@chiptrade.com"
+              <a 
+              href="mailto:info@southblueweb.com"
               className="inline-flex items-center justify-center px-6 py-3 bg-gradient-primary text-primary-foreground rounded-lg font-medium hover:bg-gradient-accent transition-all duration-300 shadow-accent"
             >
               Email Us
             </a>
             <a 
-              href="tel:+15551234567"
+              href="tel:+85230697418"
               className="inline-flex items-center justify-center px-6 py-3 bg-surface-variant text-foreground rounded-lg font-medium hover:bg-muted transition-all duration-300 border border-border"
             >
               Call Us

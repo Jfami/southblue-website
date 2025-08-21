@@ -7,32 +7,32 @@ import heroBackground from "@/assets/hero-bg.jpg";
 const Index = () => {
   const features = [
     {
-      icon: Cpu,
-      title: "High-Performance Processors",
-      description: "Advanced microprocessors and microcontrollers for demanding applications"
+      icon: Shield,
+      title: "Zero Counterfeit Risk",
+      description: "Every component lab-tested by independent third parties. We stake our reputation on authenticity - and back it with a 365-day guarantee."
     },
     {
       icon: Zap,
-      title: "Memory Solutions",
-      description: "Comprehensive range of memory chips from standard to high-speed variants"
-    },
-    {
-      icon: Shield,
-      title: "Security Chips",
-      description: "Specialized security and encryption integrated circuits for data protection"
+      title: "Optimized Logistics",
+      description: "Streamlined supply chain and strategic partnerships ensure efficient delivery to European markets. Our logistics network minimizes delays and keeps your production on schedule."
     },
     {
       icon: Users,
-      title: "Expert Support",
-      description: "Technical expertise and integration support from our engineering team"
+      title: "Beyond Trading",
+      description: "Connect with vetted PCBA factories, access testing labs, consolidate shipments. We solve your entire supply chain puzzle."
+    },
+    {
+      icon: Cpu,
+      title: "Complete Component Universe",
+      description: "From cutting-edge AI chips to legacy components. If it exists, we can source it - including those 'impossible to find' parts."
     }
   ];
 
   const stats = [
-    { number: "10,000+", label: "Components Available" },
-    { number: "500+", label: "Satisfied Clients" },
-    { number: "24/7", label: "Technical Support" },
-    { number: "99.9%", label: "Quality Guarantee" }
+    { number: "365", label: "Day Return Policy" },
+    { number: "100%", label: "Authentic Parts" },
+    { number: "1-3", label: "Days Shipping" },
+    { number: "10+", label: "Industries Served" }
   ];
 
   return (
@@ -50,13 +50,12 @@ const Index = () => {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center">
             <h1 className="text-5xl md:text-7xl font-heading font-bold text-gradient mb-8 animate-fade-in">
-              Next-Generation
+              Europe's Most Trusted
               <br />
-              Integrated Circuits
+              Electronic Components Partner
             </h1>
             <p className="text-xl md:text-2xl text-foreground/90 max-w-4xl mx-auto mb-12 leading-relaxed">
-              Power your innovations with premium semiconductor solutions. 
-              From standard components to custom designs, we deliver excellence in every chip.
+              Skip the counterfeit nightmare. Get 100% authentic components with lab-verified quality, optimized European logistics, and a 365-day guarantee that protects your business.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Button 
@@ -110,7 +109,7 @@ const Index = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-6">
-              Why Choose ChipTrade?
+              Why Choose SouthBlue?
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Industry-leading integrated circuit solutions backed by expertise and innovation
@@ -144,8 +143,8 @@ const Index = () => {
             Ready to Get Started?
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-12">
-            Join hundreds of companies that trust ChipTrade for their semiconductor needs. 
-            Get expert consultation and competitive pricing today.
+            Join 500+ European companies who've eliminated component sourcing headaches. 
+            Get your custom quote in under 4 hours - guaranteed.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">

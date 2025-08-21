@@ -1,5 +1,6 @@
+import { Mail, Phone, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Cpu, Mail, Phone, MapPin, Github, Linkedin, Twitter } from "lucide-react";
+import { Cpu, Github, Linkedin, Twitter } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -13,7 +14,7 @@ const Footer = () => {
                 <Cpu className="h-5 w-5 text-primary-foreground" />
               </div>
               <span className="text-lg font-heading font-bold text-gradient">
-                ChipTrade
+                SouthBlue
               </span>
             </Link>
             <p className="text-muted-foreground text-sm">
@@ -39,22 +40,32 @@ const Footer = () => {
             </h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                <Link to="/" className="text-muted-foreground text-sm hover:text-primary transition-colors">
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/services" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                <Link to="/services" className="text-muted-foreground text-sm hover:text-primary transition-colors">
                   Services
                 </Link>
               </li>
               <li>
-                <Link to="/faq" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                <Link to="/products" className="text-muted-foreground text-sm hover:text-primary transition-colors">
+                  Products
+                </Link>
+              </li>
+              <li>
+                <Link to="/faq" className="text-muted-foreground text-sm hover:text-primary transition-colors">
                   FAQ
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                <Link to="/about" className="text-muted-foreground text-sm hover:text-primary transition-colors">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="text-muted-foreground text-sm hover:text-primary transition-colors">
                   Contact
                 </Link>
               </li>
@@ -67,46 +78,44 @@ const Footer = () => {
               Services
             </h3>
             <ul className="space-y-2">
-              <li className="text-muted-foreground text-sm">Microprocessors</li>
-              <li className="text-muted-foreground text-sm">Memory Chips</li>
-              <li className="text-muted-foreground text-sm">Custom Solutions</li>
-              <li className="text-muted-foreground text-sm">Technical Support</li>
+              <li><Link to="/services/components-procurement" className="text-muted-foreground text-sm hover:text-primary transition-colors">Components Procurement</Link></li>
+              <li><Link to="/services/quality-assurance" className="text-muted-foreground text-sm hover:text-primary transition-colors">Quality Assurance</Link></li>
+              <li><Link to="/services/excess-stock-management" className="text-muted-foreground text-sm hover:text-primary transition-colors">Excess Stock Management</Link></li>
+              <li><Link to="/services/value-added-services" className="text-muted-foreground text-sm hover:text-primary transition-colors">Value-Added Services</Link></li>
             </ul>
           </div>
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-4">
-              Contact Info
-            </h3>
-            <ul className="space-y-3">
-              <li className="flex items-center space-x-2 text-muted-foreground text-sm">
-                <Mail className="h-4 w-4 text-primary" />
-                <span>info@chiptrade.com</span>
-              </li>
-              <li className="flex items-center space-x-2 text-muted-foreground text-sm">
-                <Phone className="h-4 w-4 text-primary" />
-                <span>+1 (555) 123-4567</span>
-              </li>
-              <li className="flex items-center space-x-2 text-muted-foreground text-sm">
-                <MapPin className="h-4 w-4 text-primary" />
-                <span>Silicon Valley, CA</span>
-              </li>
-            </ul>
+            <h3 className="font-semibold text-foreground mb-4">Contact Info</h3>
+            <div className="space-y-2 text-sm text-muted-foreground">
+              <p className="flex items-center">
+                <Mail className="h-4 w-4 mr-2" />
+                info@southblueweb.com
+              </p>
+              <p className="flex items-center">
+                <Phone className="h-4 w-4 mr-2" />
+                +852 3069 7418
+              </p>
+              <p className="flex items-center">
+                <MapPin className="h-4 w-4 mr-2" />
+                FLAT/RM 511 5/F MING SANG INDUSTRIAL BUILDING, 19-21 HING YIP ST KWUN TONG KL, HONGKONG
+              </p>
+            </div>
           </div>
         </div>
 
         <div className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-muted-foreground text-sm">
-            © 2024 ChipTrade. All rights reserved.
+            &copy; 2024 SouthBlue. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="text-muted-foreground hover:text-primary text-sm transition-colors">
+            <Link to="/privacy-policy" className="text-muted-foreground hover:text-primary text-sm transition-colors">
               Privacy Policy
-            </a>
-            <a href="#" className="text-muted-foreground hover:text-primary text-sm transition-colors">
+            </Link>
+            <Link to="/terms-of-service" className="text-muted-foreground hover:text-primary text-sm transition-colors">
               Terms of Service
-            </a>
+            </Link>
           </div>
         </div>
       </div>

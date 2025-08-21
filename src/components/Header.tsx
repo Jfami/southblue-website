@@ -10,7 +10,9 @@ const Header = () => {
   const navigation = [
     { name: "Home", href: "/" },
     { name: "Services", href: "/services" },
+    { name: "Products", href: "/products" },
     { name: "FAQ", href: "/faq" },
+    { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
   ];
 
@@ -26,7 +28,7 @@ const Header = () => {
               <Cpu className="h-6 w-6 text-primary-foreground" />
             </div>
             <span className="text-xl font-heading font-bold text-gradient">
-              ChipTrade
+              SouthBlue
             </span>
           </Link>
 
@@ -70,20 +72,26 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-border">
             <div className="flex flex-col space-y-4">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className={`text-sm font-medium px-2 py-1 transition-colors ${
-                    isActive(item.href)
-                      ? "text-primary"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.name}
+              <div className="hidden md:flex items-center space-x-8">
+                <Link to="/" className="text-foreground hover:text-primary transition-colors font-medium">
+                  Home
                 </Link>
-              ))}
+                <Link to="/services" className="text-foreground hover:text-primary transition-colors font-medium">
+                  Services
+                </Link>
+                <Link to="/products" className="text-foreground hover:text-primary transition-colors font-medium">
+                  Products
+                </Link>
+                <Link to="/faq" className="text-foreground hover:text-primary transition-colors font-medium">
+                  FAQ
+                </Link>
+                <Link to="/about" className="text-foreground hover:text-primary transition-colors font-medium">
+                  About
+                </Link>
+                <Link to="/contact" className="text-foreground hover:text-primary transition-colors font-medium">
+                  Contact
+                </Link>
+              </div>
               <Button 
                 asChild 
                 className="mt-4 bg-gradient-primary text-primary-foreground w-fit"

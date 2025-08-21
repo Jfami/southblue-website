@@ -65,8 +65,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold text-foreground">Email</h3>
-                      <p className="text-muted-foreground">info@chiptrade.com</p>
-                      <p className="text-muted-foreground">sales@chiptrade.com</p>
+                      <p className="text-muted-foreground">info@southblueweb.com</p>
                     </div>
                   </div>
                   
@@ -76,8 +75,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold text-foreground">Phone</h3>
-                      <p className="text-muted-foreground">+1 (555) 123-4567</p>
-                      <p className="text-muted-foreground">+1 (555) 123-4568</p>
+                      <p className="text-muted-foreground">+852 3069 7418</p>
                     </div>
                   </div>
                   
@@ -88,9 +86,10 @@ const Contact = () => {
                     <div>
                       <h3 className="font-semibold text-foreground">Address</h3>
                       <p className="text-muted-foreground">
-                        1234 Silicon Valley Blvd<br />
-                        Suite 500<br />
-                        Palo Alto, CA 94301
+                        SOUTHBLUE ELECTRONICS HK LIMITED<br />
+                        FLAT/RM 511 5/F MING SANG INDUSTRIAL BUILDING<br />
+                        19-21 HING YIP ST KWUN TONG KL<br />
+                        HONGKONG
                       </p>
                     </div>
                   </div>
@@ -102,8 +101,8 @@ const Contact = () => {
                     <div>
                       <h3 className="font-semibold text-foreground">Business Hours</h3>
                       <p className="text-muted-foreground">
-                        Monday - Friday: 8:00 AM - 6:00 PM PST<br />
-                        Saturday: 9:00 AM - 2:00 PM PST<br />
+                        Monday - Friday: 9:00 AM - 6:00 PM HKT<br />
+                        Saturday: 9:00 AM - 1:00 PM HKT<br />
                         Sunday: Closed
                       </p>
                     </div>
