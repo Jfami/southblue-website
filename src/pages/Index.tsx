@@ -39,7 +39,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section 
-        className="relative py-32 px-4 sm:px-6 lg:px-8 overflow-hidden"
+        className="relative py-32 overflow-hidden w-full"
         style={{
           backgroundImage: `linear-gradient(rgba(33, 41, 60, 0.8), rgba(33, 41, 60, 0.9)), url(${heroBackground})`,
           backgroundSize: 'cover',
@@ -47,7 +47,7 @@ const Index = () => {
           backgroundAttachment: 'fixed'
         }}
       >
-        <div className="max-w-7xl mx-auto relative z-10">
+        <div className="relative z-10 px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-5xl md:text-7xl font-heading font-bold text-gradient mb-8 animate-fade-in">
               Europe's Most Trusted
