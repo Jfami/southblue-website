@@ -84,12 +84,9 @@ const Contact = () => {
                       <MapPin className="h-6 w-6 text-primary-foreground" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-foreground">Address</h3>
+                      <h3 className="font-semibold text-foreground">Company</h3>
                       <p className="text-muted-foreground">
-                        SOUTHBLUE ELECTRONICS HK LIMITED<br />
-                        FLAT/RM 511 5/F MING SANG INDUSTRIAL BUILDING<br />
-                        19-21 HING YIP ST KWUN TONG KL<br />
-                        HONGKONG
+                        SOUTHBLUE ELECTRONICS HK LIMITED
                       </p>
                     </div>
                   </div>

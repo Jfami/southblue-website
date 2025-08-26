@@ -110,9 +110,6 @@ const TermsOfService = () => {
               </p>
               <div className="bg-surface p-6 rounded-lg border border-border">
                 <p><strong>SOUTHBLUE ELECTRONICS HK LIMITED</strong></p>
-                <p>FLAT/RM 511 5/F MING SANG INDUSTRIAL BUILDING</p>
-                <p>19-21 HING YIP ST KWUN TONG KL</p>
-                <p>HONGKONG</p>
                 <p className="mt-4">
                   Email: <a href="mailto:info@southblueweb.com" className="text-primary hover:underline">info@southblueweb.com</a><br />
                   Phone: <a href="tel:+85230697418" className="text-primary hover:underline">+852 3069 7418</a>
