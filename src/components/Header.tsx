@@ -72,29 +72,19 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-border">
             <div className="flex flex-col space-y-4">
-              <div className="hidden md:flex items-center space-x-8">
-                <Link to="/" className="text-foreground hover:text-primary transition-colors font-medium">
-                  Home
+              {navigation.map((item) => (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.name}
                 </Link>
-                <Link to="/services" className="text-foreground hover:text-primary transition-colors font-medium">
-                  Services
-                </Link>
-                <Link to="/products" className="text-foreground hover:text-primary transition-colors font-medium">
-                  Products
-                </Link>
-                <Link to="/faq" className="text-foreground hover:text-primary transition-colors font-medium">
-                  FAQ
-                </Link>
-                <Link to="/about" className="text-foreground hover:text-primary transition-colors font-medium">
-                  About
-                </Link>
-                <Link to="/contact" className="text-foreground hover:text-primary transition-colors font-medium">
-                  Contact
-                </Link>
-              </div>
+              ))}
               <Button 
                 asChild 
-                className="mt-4 bg-gradient-primary text-primary-foreground w-fit"
+                className="mt-4 bg-gradient-primary text-primary-foreground w-fit mx-3"
               >
                 <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
                   Get Quote

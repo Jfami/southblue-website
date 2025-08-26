@@ -17,8 +17,8 @@ const About = () => {
     },
     {
       icon: Globe,
-      title: "European Focus",
-      description: "Specialized service for the European market with deep understanding of regional requirements and compliance standards."
+      title: "Global Supplier",
+      description: "Reliable worldwide distribution network with deep understanding of international requirements and compliance standards."
     },
     {
       icon: Users,
@@ -87,8 +87,8 @@ const About = () => {
                 <div className="text-sm text-muted-foreground">Authentic Parts</div>
               </div>
               <div className="text-center p-6 bg-background rounded-lg border border-border">
-                <div className="text-3xl font-bold text-gradient mb-2">1-3</div>
-                <div className="text-sm text-muted-foreground">Days Shipping</div>
+                <div className="text-3xl font-bold text-gradient mb-2">Fast</div>
+                <div className="text-sm text-muted-foreground">Efficient Logistics</div>
               </div>
               <div className="text-center p-6 bg-background rounded-lg border border-border">
                 <div className="text-3xl font-bold text-gradient mb-2">10+</div>

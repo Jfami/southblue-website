@@ -31,7 +31,7 @@ const Index = () => {
   const stats = [
     { number: "365", label: "Day Return Policy" },
     { number: "100%", label: "Authentic Parts" },
-    { number: "1-3", label: "Days Shipping" },
+    { number: "Fast", label: "Efficient Logistics" },
     { number: "10+", label: "Industries Served" }
   ];
 

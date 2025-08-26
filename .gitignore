@@ -23,6 +23,11 @@ dist-ssr
 *.sln
 *.sw?
 
+# Security - SSH keys and sensitive files
+*.pem
+*.key
+Project doc/*.pem
+
 # Security - Private keys and certificates
 *.pem
 *.key

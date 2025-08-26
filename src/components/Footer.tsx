@@ -1,6 +1,6 @@
 import { Mail, Phone, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Cpu, Github, Linkedin, Twitter } from "lucide-react";
+import { Cpu, Linkedin, Twitter } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -21,9 +21,6 @@ const Footer = () => {
               Leading provider of integrated circuits and semiconductor solutions for modern technology needs.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Github className="h-5 w-5" />
-              </a>
               <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
                 <Linkedin className="h-5 w-5" />
               </a>

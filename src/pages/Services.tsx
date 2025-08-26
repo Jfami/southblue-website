@@ -115,7 +115,7 @@ const Services = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {[
               { step: "01", title: "Consultation", desc: "Understanding your requirements" },
-              { step: "02", title: "Design", desc: "Custom solution development" },
+              { step: "02", title: "Sourcing", desc: "Component identification and procurement" },
               { step: "03", title: "Testing", desc: "Quality assurance and validation" },
               { step: "04", title: "Delivery", desc: "Fast and secure shipping" }
             ].map((item, index) => (

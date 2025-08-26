@@ -11,12 +11,12 @@ const FAQ = () => {
       answer: "We offer a comprehensive range of integrated circuits including microprocessors, memory chips, analog ICs, digital signal processors, microcontrollers, and custom ASIC solutions. Our inventory spans from standard commodity chips to specialized high-performance components."
     },
     {
-      question: "Do you provide custom chip design services?",
-      answer: "Yes, we offer custom ASIC and FPGA design services. Our experienced engineering team can develop tailored solutions based on your specific requirements, from initial concept to final production-ready designs."
+      question: "Do you provide chip design services?",
+      answer: "We are a broker of electronic components and do not offer chip design services. Chip or PCB design services are usually handled by specific design houses or ODM companies, which are not in our business range. We focus on sourcing and supplying authentic electronic components."
     },
     {
       question: "What is your typical delivery timeframe?",
-      answer: "Standard components are typically shipped within 1-3 business days. Custom solutions and specialized chips may require 2-8 weeks depending on complexity and current demand. We always provide accurate timelines during the quote process."
+      answer: "We handle logistics efficiently and according to customer needs. Delivery timeframes vary based on component availability and destination. We always provide accurate timelines during the quote process and work to optimize delivery schedules."
     },
     {
       question: "Do you offer technical support and integration assistance?",
@@ -28,7 +28,7 @@ const FAQ = () => {
     },
     {
       question: "What are your minimum order quantities?",
-      answer: "Minimum order quantities vary by product. Standard components often have low MOQs (sometimes as low as 1 piece for prototyping), while custom solutions typically require higher quantities. Contact us for specific product MOQ information."
+      answer: "Minimum order quantities vary by product. Standard components often have low MOQs (sometimes as low as 1 piece for prototyping), while specialized components may require higher quantities. Contact us for specific product MOQ information."
     },
     {
       question: "Do you offer volume discounts?",
@@ -36,7 +36,7 @@ const FAQ = () => {
     },
     {
       question: "How do you handle obsolete or hard-to-find components?",
-      answer: "We specialize in sourcing obsolete and end-of-life components through our extensive network of suppliers. We can also suggest modern alternatives or provide custom solutions to replace discontinued chips."
+      answer: "We specialize in sourcing obsolete and end-of-life components through our extensive network of suppliers. We can also suggest modern alternatives or help find suitable replacements for discontinued components."
     }
   ];
 

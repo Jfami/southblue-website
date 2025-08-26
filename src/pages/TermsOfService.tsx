@@ -8,7 +8,7 @@ const TermsOfService = () => {
           </h1>
           <div className="prose prose-lg max-w-none text-muted-foreground">
             <p className="text-sm text-muted-foreground mb-8">
-              Last updated: {new Date().toLocaleDateString()}
+              Last updated: August 21, 2025
             </p>
 
             <section className="mb-8">

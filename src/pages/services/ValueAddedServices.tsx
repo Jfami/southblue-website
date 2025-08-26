@@ -222,8 +222,8 @@ const ValueAddedServices = () => {
             <Card className="surface-elevated border-border">
               <CardContent className="p-8 text-center">
                 <Globe className="h-12 w-12 text-primary mx-auto mb-4" />
-                <h3 className="text-xl font-bold text-foreground mb-3">European Focus</h3>
-                <p className="text-muted-foreground">Specialized service delivery optimized for European market requirements</p>
+                <h3 className="text-xl font-bold text-foreground mb-3">Global Supplier</h3>
+                <p className="text-muted-foreground">Reliable worldwide distribution network serving international market requirements</p>
               </CardContent>
             </Card>
           </div>
