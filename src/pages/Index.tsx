@@ -36,7 +36,7 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <>
       {/* Hero Section */}
       <section 
         className="relative py-32 overflow-hidden"
@@ -185,7 +185,60 @@ const Index = () => {
           </div>
         </div>
       </section>
-    </div>
+      
+      {/* Rest of content with background wrapper */}
+      <div className="bg-background">
+        {/* Stats Section */}
+        <section className="py-20 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+              {stats.map((stat, index) => (
+                <div key={index} className="space-y-2">
+                  <div className="text-4xl md:text-5xl font-heading font-bold text-gradient">
+                    {stat.number}
+                  </div>
+                  <div className="text-muted-foreground font-medium">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Features Section */}
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-surface">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">
+                Why Choose SouthBlue?
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                Your trusted partner for authentic electronic components with unmatched quality assurance.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {features.map((feature, index) => (
+                <Card key={index} className="surface-elevated border-border hover:shadow-accent transition-all duration-300 group">
+                  <CardContent className="p-8 text-center">
+                    <div className="p-4 bg-gradient-tech rounded-full w-fit mx-auto mb-6 shadow-glow group-hover:animate-glow">
+                      <feature.icon className="h-8 w-8 text-primary-foreground" />
+                    </div>
+                    <h3 className="text-xl font-heading font-bold text-foreground mb-4">
+                      {feature.title}
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+      </div>
+    </>
   );
 };
 
